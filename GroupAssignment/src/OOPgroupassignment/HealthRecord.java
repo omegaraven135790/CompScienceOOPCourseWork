@@ -17,9 +17,7 @@ public class HealthRecord {
     protected double weight;
     protected double height;
     
-    //array list to append the data from activity and diet record
-    ArrayList<String> TrackActivity = new ArrayList<>();
-    ArrayList<String> TrackDiet = new ArrayList<>();
+
     
     public void HealthRecord(HealthTrackerApp menu){
         Scanner input = new Scanner (System.in);
