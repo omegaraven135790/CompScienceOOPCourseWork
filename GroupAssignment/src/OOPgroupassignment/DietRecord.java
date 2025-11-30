@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Akmal Zikry
- * @author Doshyant Raj
+ * @author Doshyant
  */
 public class DietRecord extends HealthRecord{
      private ArrayList<int[]> TrackDiet = new ArrayList<>();

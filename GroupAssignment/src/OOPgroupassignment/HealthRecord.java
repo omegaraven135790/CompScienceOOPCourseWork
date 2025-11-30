@@ -10,6 +10,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Akmal Zikry
+ * @author doshyant
  */
 public class HealthRecord {
     protected String name;
