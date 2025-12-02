@@ -7,7 +7,7 @@ import java.util.*;
 /**
  *
  * @author Akmal Zikry
- * @author Doshyant
+ * @author Doshyant Raj
  */
 public class ActivityRecord extends HealthRecord {
     //array list to append the data from activity and diet record

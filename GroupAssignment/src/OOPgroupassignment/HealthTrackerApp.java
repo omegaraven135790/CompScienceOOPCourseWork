@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  *
  * @author Akmal Zikry
- * @author Doshyant
+ * @author Doshyant Raj
  */
 public class HealthTrackerApp {
     private String name;
