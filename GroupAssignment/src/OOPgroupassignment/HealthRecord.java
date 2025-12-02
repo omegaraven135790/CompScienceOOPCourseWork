@@ -32,7 +32,7 @@ public class HealthRecord {
         System.out.print("Welcome to your Health Record, what kind of record would you like to access?");
         System.out.print("\n Press 1 to view your Activity Record \n Press 2 to view Diet Record \n Press 3 to log out");
         int recordChoice = input.nextInt();
-        
+         
         while(recordChoice != 3){
             switch(recordChoice){
                 case 1:

@@ -25,7 +25,7 @@ public class DietRecord extends HealthRecord{
         TrackDiet.add(newRecord);
     }
 
-        public void setNewRecord(int day, int week, int calories, int meals, int waterDrunk, int position )//Like above but with a specified posiiton to insert it into
+    public void setNewRecord(int day, int week, int calories, int meals, int waterDrunk, int position )//Like above but with a specified posiiton to insert it into
     {
         
         int newRecord[] = {week,day,calories,meals,waterDrunk};
@@ -50,24 +50,24 @@ public class DietRecord extends HealthRecord{
         switch(condition_checked)
         {
             case "week":
-                condition_position = 1;
+                condition_position = 0;
                 break;
             case "day":
-                condition_position = 2;
+                condition_position = 1;
                 break;
             case "calories":
-                condition_position = 3;
+                condition_position = 2;
                 break;
             case "meals":
-                condition_position = 4;
+                condition_position = 3;
                 break;
             case "waterDrunk":
-                condition_position = 5;
+                condition_position = 4;
                 break;
 
 
             default:
-                System.out.println("invalid condition being checked, the valid conditions to be checked are: \n day \n week \n calories \n meals \n waterDrunk \n position");
+                System.out.println("invalid condition being checked, the valid conditions to be checked are: \n day \n week \n calories \n meals \n waterDrunk \n");
                 break;
         }
 
