@@ -73,7 +73,7 @@ public class ActivityRecord extends HealthRecord {
         }
     }
 
-    public void displayDiet()
+    public void displayActivity()
     {
         for(int i = 0;i<array_length;i++)
         {
