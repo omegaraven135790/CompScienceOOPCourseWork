@@ -75,7 +75,7 @@ public class DietRecord extends HealthRecord{
         {
                 if(TrackDiet.get(i)[condition_position]== condition_value)
                 {
-                    TrackDiet.get(i)[condition_position] = condition_value;
+                    TrackDiet.get(i)[condition_position] = changeValue;
                 }
         }
     }

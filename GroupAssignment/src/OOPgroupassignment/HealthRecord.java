@@ -15,7 +15,7 @@ public class HealthRecord {
     private int age;
     private double weight;
     private double height;
-    private LocalDate date;
+    protected LocalDate date;
     private int calorie;
     private int meals;
     private int waterDrunk;
