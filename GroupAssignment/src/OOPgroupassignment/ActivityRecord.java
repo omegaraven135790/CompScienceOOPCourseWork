@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class ActivityRecord extends HealthRecord {
     //array list to append the data from activity and diet record
-    ArrayList<String[]> TrackActivity = new ArrayList<>();
+    ArrayList<int[]> TrackActivity = new ArrayList<>();
     private final int column_length = 3;
      private int array_length = TrackActivity.size();     
      private int condition_position; //used in the switch statement in the 2nd overide of ChangeRecord and the for loop to specify at what condition met should the data be altered
