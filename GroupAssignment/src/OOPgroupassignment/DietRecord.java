@@ -13,23 +13,39 @@ import java.util.ArrayList;
  */
 public class DietRecord extends HealthRecord{
      private ArrayList<int[]> TrackDiet = new ArrayList<>();
-     private final int column_length = 5;
+     private final int column_length = 6;
      private int array_length = TrackDiet.size();     
      private int condition_position; //used in the switch statement in the 2nd overide of ChangeRecord and the for loop to specify at what condition met should the data be altered
     
 
-    public void setNewRecord(int day, int week, int calories, int meals, int waterDrunk )//used to insert a new record into the list, the record must include the data that is parsed inside to track things properly
+    public void setNewRecord( int calories, int meals, int waterDrunk )//used to insert a new record into the list, the record must include the data that is parsed inside to track things properly
     {
         
-        int newRecord[] = {week,day,calories,meals,waterDrunk};
-        TrackDiet.add(newRecord);
+        int newRecord[] = {this.year,this.week,this.day,calories,meals,waterDrunk};
+        if(newRecord.length !=6)
+        {
+            System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+            return;
+        }
+        else
+        {
+            TrackDiet.add(newRecord);
+        }
     }
 
-    public void setNewRecord(int day, int week, int calories, int meals, int waterDrunk, int position )//Like above but with a specified posiiton to insert it into
+    public void setNewRecord(int year,int day, int week,int calories, int meals, int waterDrunk, int position )//Like above but with a specified posiiton to insert it into
     {
         
-        int newRecord[] = {week,day,calories,meals,waterDrunk};
-        TrackDiet.add(position,newRecord);
+        int newRecord[] = {year,week,day,calories,meals,waterDrunk};
+            if(newRecord.length !=6)
+            {
+                System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+                return;
+            }
+            else
+            {
+                TrackDiet.add(position,newRecord);
+            }
     }
 
     public int GetLength() // returns length of the ArrayList
@@ -38,9 +54,9 @@ public class DietRecord extends HealthRecord{
         return array_length;
     }
 
-    public void ChangeRecord(int day, int week, int calories, int meals, int waterDrunk, int position )// used to change a specific record in the table at a specified position
+    public void ChangeRecord(int year,int day, int week, int calories, int meals, int waterDrunk, int position )// used to change a specific record in the table at a specified position
     {
-        int ChangeRecord[] ={week,day,calories,meals,waterDrunk};
+        int ChangeRecord[] ={year,week,day,calories,meals,waterDrunk};
         TrackDiet.set(position,ChangeRecord);       
     }
 
@@ -49,20 +65,23 @@ public class DietRecord extends HealthRecord{
         
         switch(condition_checked)
         {
-            case "week":
+            case "year":
                 condition_position = 0;
                 break;
-            case "day":
+            case "week":
                 condition_position = 1;
                 break;
-            case "calories":
+            case "day":
                 condition_position = 2;
                 break;
-            case "meals":
+            case "calories":
                 condition_position = 3;
                 break;
-            case "waterDrunk":
+            case "meals":
                 condition_position = 4;
+                break;
+            case "waterDrunk":
+                condition_position = 5;
                 break;
 
 
@@ -84,10 +103,12 @@ public class DietRecord extends HealthRecord{
     {
         for(int i = 0;i<array_length;i++)
         {
-            for(int j = 0; j<column_length;j++)
+
+            System.out.println("year:" +TrackDiet.get(i)[0] + "\tweek:" +TrackDiet.get(i)[1] + "\tday:" + TrackDiet.get(i)[2] + "\tcalories:" + TrackDiet.get(i)[3] + "\tmeals:" + TrackDiet.get(i)[4] + "\t water drunk(in leters)" + TrackDiet.get(i)[5]);
+/*             for(int j = 0; j<column_length;j++)
             {
             System.out.print(TrackDiet.get(i)[j] + "\t");
-            }
+            } */
         }
     }
 

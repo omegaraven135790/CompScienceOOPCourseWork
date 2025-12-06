@@ -4,6 +4,7 @@
  */
 package OOPgroupassignment;
 import java.time.LocalDate;
+import java.util.Calendar;
 /**
  *
  * @author Akmal Zikry
@@ -14,31 +15,17 @@ public class HealthRecord {
     private int age;
     private double weight;
     private double height;
-    private LocalDate date;
-    private int day;
-    private int week;
-    private int calorie;
-    private int meals;
-    private int water;
-    private int steps;
+    protected Calendar calendar;
+    protected LocalDate date;
+    protected int day;
+    protected int week;
+    protected int year;
     
     public int getDay(){return this.day;}
     public void setDay(int day){this.day = day;}
     
     public int getWeek(){return this.week;}
     public void setWeek(int week){this.week = week;}
-    
-    public int getCalorie(){return this.calorie;}
-    public void setCalorie(int calorie){this.calorie = calorie;}
-    
-    public int getMeals(){return this.meals;}
-    public void setMeals(int meals){this.meals = meals;}
-    
-    public int getWater(){return this.water;}
-    public void setWater(int water){this.water = water;}
-    
-    public int getSteps(){return this.steps;}
-    public void setSteps(int steps){this.steps = steps;}
     
     public String getName(){return this.name;}
     public void setName(String name){
@@ -78,6 +65,10 @@ public class HealthRecord {
         this.weight = weight;
         this.height = height;
         this.date = LocalDate.now();
+        this.day = calendar.get(Calendar.DATE);
+        this.week = calendar.get(Calendar.WEEK_OF_YEAR);
+        this.year = calendar.get(Calendar.YEAR);
+        this.calendar =Calendar.getInstance();
     }
     
     public void displayAccountInfo() {
@@ -85,7 +76,7 @@ public class HealthRecord {
         System.out.print("\nAge: " + this.age);
         System.out.print("\nWeight: " + this.weight + " kg");
         System.out.print("\nHeight: " + this.height + " m");
-        System.out.print("\nDate of Creation:" +date);
+        System.out.print("\nDate Today:" +date);
     }
     
     

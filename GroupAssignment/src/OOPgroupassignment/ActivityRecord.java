@@ -12,21 +12,20 @@ import java.util.*;
 public class ActivityRecord extends HealthRecord {
     //array list to append the data from activity and diet record
     ArrayList<int[]> TrackActivity = new ArrayList<>();
-    private final int column_length = 3;
+    private final int column_length = 4;
      private int array_length = TrackActivity.size();     
      private int condition_position; //used in the switch statement in the 2nd overide of ChangeRecord and the for loop to specify at what condition met should the data be altered
 
-    public void setNewRecord(int day, int week, int steps)//used to insert a new record into the list, the record must include the data that is parsed inside to track things properly
+    public void setNewRecord( int steps)//used to insert a new record into the list, the record must include the data that is parsed inside to track things properly
     {
-        
-        int newRecord[] = {day, week, steps};
+        int newRecord[] = {this.year,this.day, this.week, steps};
         TrackActivity.add(newRecord);
     }
 
-    public void setNewRecord(int day, int week, int steps, int position )//Like above but with a specified posiiton to insert it into
+    public void setNewRecord(int year,int day, int week, int steps, int position )//Like above but with a specified posiiton to insert it into
     {
         
-        int newRecord[] = {day, week, steps};
+        int newRecord[] = {year,day, week, steps};
         TrackActivity.add(position,newRecord);
     }
 
@@ -36,9 +35,9 @@ public class ActivityRecord extends HealthRecord {
         return array_length;
     }
 
-    public void ChangeRecord(int day, int week, int steps, int position )// used to change a specific record in the table at a specified position
+    public void ChangeRecord(int year,int day, int week, int steps, int position )// used to change a specific record in the table at a specified position
     {
-        int ChangeRecord[] ={day, week, steps};
+        int ChangeRecord[] ={year,day, week, steps};
         TrackActivity.set(position,ChangeRecord);       
     }
 
@@ -60,7 +59,7 @@ public class ActivityRecord extends HealthRecord {
 
 
             default:
-                System.out.println("invalid condition being checked, the valid conditions to be checked are: \n day \n week \n steps \n");
+                System.out.println("invalid condition being checked, the valid conditions to be checked are: \n year \n day \n week \n steps \n");
                 break;
         }
 
@@ -79,7 +78,7 @@ public class ActivityRecord extends HealthRecord {
         {
             for(int j = 0; j<column_length;j++)
             {
-            System.out.print(TrackActivity.get(i)[j] + "\t");
+                        System.out.println("year:" +TrackActivity.get(i)[0] + "\tweek:" +TrackActivity.get(i)[1] + "\tday:" + TrackActivity.get(i)[2] + "\n steps:" + TrackActivity.get(i)[3]);
             }
         }
     }
