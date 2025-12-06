@@ -82,7 +82,8 @@ public class HealthTrackerApp {
                     data.displayAccountInfo();
                     break;
                 case 2:
-                    
+                    EditAccount();
+                    break;
                 case 3:
                     DietMenu();
                     break;
@@ -150,19 +151,16 @@ public class HealthTrackerApp {
         while(run){
             System.out.print("You are now at Diet Record \nWhat do you plan to do?");
             System.out.print("\nPress 1 to add data for diet record");
-            System.out.print("\nPress 2 to update record by position");
-            System.out.print("\nPress 3 to update record by condition");
-            System.out.print("\nPress 4 to view Diet Record");
-            System.out.print("\nPress 5 to return to main menu: ");
+            System.out.print("\nPress 2 to insert new data by position");
+            System.out.print("\nPress 3 to update record by position");
+            System.out.print("\nPress 4 to update record by condition");
+            System.out.print("\nPress 5 to view Diet Record");
+            System.out.print("\nPress 6 to return to main menu: ");
             int choice = input.nextInt();
             input.nextLine();
             switch(choice){
                 case 1:
                     try{
-                        System.out.print("Insert amount of days: ");
-                        int day = input.nextInt();
-                        System.out.print("Insert amount of weeks: ");
-                        int week = input.nextInt();
                         System.out.print("Insert your calorie intake: ");
                         int calorie = input.nextInt();
                         System.out.print("Insert how many meals is taken: ");
@@ -170,7 +168,7 @@ public class HealthTrackerApp {
                         System.out.print("Insert amount of water drunk: ");
                         int water = input.nextInt();
                     
-                        dietgoal.setNewRecord(day, week, calorie, meals, water);
+                        dietgoal.setNewRecord(calorie, meals, water);
                         System.out.print("Record successfully saved");
                     }
                     catch(Exception e){
@@ -180,15 +178,41 @@ public class HealthTrackerApp {
                     break;
                 case 2:
                     try{
+                        System.out.print("What position would you like? Start from 0: ");
+                        int post = input.nextInt();
+                        System.out.print("Insert year: ");
+                        int year = input.nextInt();
+                        System.out.print("Insert day: ");
+                        int day = input.nextInt();
+                        System.out.print("Insert week: ");
+                        int week = input.nextInt();
+                        System.out.print("Insert your calorie intake: ");
+                        int calorie = input.nextInt();
+                        System.out.print("Insert how many meals is taken: ");
+                        int meals = input.nextInt();
+                        System.out.print("Insert amount of water drunk: ");
+                        int water = input.nextInt();
+                    
+                        dietgoal.setNewRecord(year, day, week, calorie, meals, water, post);
+                        System.out.print("Record added successfully!");
+                    }
+                    catch(Exception e){
+                        System.out.print("Invalid input");
+                        input.nextLine();
+                    }
+                    break;
+                case 3:
+                    try{
                         System.out.print("What position would you like to change(start from 0): ");
                         int post = input.nextInt();
+                        System.out.print("New Year: "); int newYear = input.nextInt();
                         System.out.print("New week: "); int newWeek = input.nextInt();
                         System.out.print("New day: "); int newDay = input.nextInt();
                         System.out.print("New calorie: "); int newCalorie = input.nextInt();
                         System.out.print("New meal amount: "); int newMeal = input.nextInt();
                         System.out.print("New water amount: "); int newWater = input.nextInt();
                         
-                        dietgoal.ChangeRecord(newDay, newWeek, newCalorie, newMeal, newWater, post);
+                        dietgoal.setNewRecord(newYear, newDay, newWeek, newCalorie, newMeal, newWater, post);
                         System.out.print("Record changed succesfully!");
                     
                     }
@@ -197,7 +221,7 @@ public class HealthTrackerApp {
                         input.nextLine();
                     }
                     break;
-                case 3:
+                case 4:
                     try{
                         System.out.print("What field would you like to check? (day/week/calorie/meal/water): ");
                         String field = input.nextLine();
@@ -213,11 +237,11 @@ public class HealthTrackerApp {
                         System.out.print("Invalid input");
                         input.nextLine();
                     }
-                case 4:
+                case 5:
                     System.out.print("\nYour Diet Record: ");
                     dietgoal.displayDiet();
                     break;
-                case 5:
+                case 6:
                     run = false;
                     break;
                 default:
@@ -233,23 +257,19 @@ public class HealthTrackerApp {
         while(run){
             System.out.print("\nYou are now at Activity Record. \nWhat would you like to do?");
             System.out.print("\nPress 1 to insert data into record");
-            System.out.print("\nPress 2 to update record by position");
-            System.out.print("\nPress 3 to update record by condition");
-            System.out.print("\nPress 4 to view Activity Record");
-            System.out.print("\nPress 5 to return to main menu: ");
+            System.out.print("\nPress 2 to insert data into record by position");
+            System.out.print("\nPress 3 to update record by position");
+            System.out.print("\nPress 4 to update record by condition");
+            System.out.print("\nPress 5 to view Activity Record");
+            System.out.print("\nPress 6 to return to main menu: ");
             int choice = input.nextInt();
             input.nextLine();
             switch(choice){
                 case 1:
                     try{
-                        System.out.print("Insert amount of days: ");
-                        int day = input.nextInt();
-                        System.out.print("Insert amount of weeks: ");
-                        int week = input.nextInt();
                         System.out.print("Insert amout of steps taken: ");
-                        int steps = input.nextInt();
-                    
-                        activitygoal.setNewRecord(day, week, steps);
+                        int steps = input.nextInt();                  
+                        activitygoal.setNewRecord(steps);
                         System.out.print("Record succesfully added");
                     }
                     catch(Exception e){
@@ -259,13 +279,35 @@ public class HealthTrackerApp {
                     break;
                 case 2:
                     try{
+                        System.out.print("What position would you want? Start from 0: ");
+                        int post = input.nextInt();
+                        System.out.print("Insert year: ");
+                        int year = input.nextInt();
+                        System.out.print("Insert day: ");
+                        int day = input.nextInt();
+                        System.out.print("Insert week: ");
+                        int week = input.nextInt();
+                        System.out.print("Insert amount of steps taken: ");
+                        int steps = input.nextInt();
+                        
+                        activitygoal.setNewRecord(year, day, week, steps, post);
+                        System.out.print("Record added successfully!");
+                    }
+                    catch(Exception e){
+                        System.out.print("Invalid input");
+                        input.nextLine();
+                    }
+                    break;
+                case 3:
+                    try{
                         System.out.print("What position would you like to change? Start from 0: ");
                         int post = input.nextInt();
+                        System.out.print("New Year: "); int newYear = input.nextInt();
                         System.out.print("New week: "); int newWeek = input.nextInt();
                         System.out.print("New day: "); int newDay = input.nextInt();
                         System.out.print("New steps taken: "); int newSteps = input.nextInt();
                         
-                        activitygoal.ChangeRecord(newDay, newWeek, newSteps, post);
+                        activitygoal.setNewRecord(newYear, newDay, newWeek, newSteps, post);
                         System.out.print("Record successfully changed!");
                     }
                     catch(Exception e){
@@ -273,7 +315,7 @@ public class HealthTrackerApp {
                         input.nextLine();
                     }
                  break;
-                case 3:
+                case 4:
                     try{
                         System.out.print("What field would you like to check? (day/week/steps)");
                         String field = input.nextLine();
@@ -289,11 +331,11 @@ public class HealthTrackerApp {
                         System.out.print("Invalid input");
                         input.nextLine();
                     }
-                case 4:
+                case 5:
                     System.out.print("\nYour Activity Record: ");
                     activitygoal.displayActivity();
                     break;
-                case 5:
+                case 6:
                     run = false;
                     break;
                 default:
