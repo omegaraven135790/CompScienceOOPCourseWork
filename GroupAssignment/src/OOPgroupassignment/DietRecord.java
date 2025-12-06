@@ -30,6 +30,7 @@ public class DietRecord extends HealthRecord{
         else
         {
             TrackDiet.add(newRecord);
+            array_length = TrackDiet.size();
         }
     }
 
@@ -45,6 +46,7 @@ public class DietRecord extends HealthRecord{
             else
             {
                 TrackDiet.add(position,newRecord);
+                array_length = TrackDiet.size();
             }
     }
 
@@ -111,6 +113,7 @@ public class DietRecord extends HealthRecord{
 
     public void displayDiet()
     {
+        array_length = TrackDiet.size();
         for(int i = 0;i<array_length;i++)
         {
 

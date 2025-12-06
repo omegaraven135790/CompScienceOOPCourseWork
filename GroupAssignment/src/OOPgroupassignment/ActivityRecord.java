@@ -4,6 +4,8 @@
  */
 package OOPgroupassignment;
 import java.util.*;
+
+import javax.sound.midi.Track;
 /**
  *
  * @author Akmal Zikry
@@ -27,6 +29,7 @@ public class ActivityRecord extends HealthRecord {
         else
         {
             TrackActivity.add(newRecord);
+            array_length = TrackActivity.size();
         }
         
     }
@@ -43,6 +46,7 @@ public class ActivityRecord extends HealthRecord {
         else
         {
             TrackActivity.add(position,newRecord);
+            array_length = TrackActivity.size();
         }
         
     }
@@ -102,6 +106,7 @@ public class ActivityRecord extends HealthRecord {
 
     public void displayActivity()
     {
+        array_length = TrackActivity.size();
         for(int i = 0;i<array_length;i++)
         {
             for(int j = 0; j<column_length;j++)
