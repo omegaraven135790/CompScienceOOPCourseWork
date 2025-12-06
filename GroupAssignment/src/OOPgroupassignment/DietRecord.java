@@ -22,7 +22,7 @@ public class DietRecord extends HealthRecord{
     {
         
         int newRecord[] = {this.year,this.week,this.day,calories,meals,waterDrunk};
-        if(newRecord.length !=6)
+        if(newRecord.length !=column_length)
         {
             System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
             return;
@@ -37,7 +37,7 @@ public class DietRecord extends HealthRecord{
     {
         
         int newRecord[] = {year,week,day,calories,meals,waterDrunk};
-            if(newRecord.length !=6)
+            if(newRecord.length !=column_length)
             {
                 System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
                 return;
@@ -57,7 +57,17 @@ public class DietRecord extends HealthRecord{
     public void ChangeRecord(int year,int day, int week, int calories, int meals, int waterDrunk, int position )// used to change a specific record in the table at a specified position
     {
         int ChangeRecord[] ={year,week,day,calories,meals,waterDrunk};
-        TrackDiet.set(position,ChangeRecord);       
+
+         if(ChangeRecord.length !=column_length)
+            {
+                System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+                return;
+            }
+            else
+            {
+                TrackDiet.set(position,ChangeRecord);  
+            }
+             
     }
 
         public void ChangeRecord(int changeValue, int condition_value, String condition_checked )// used to change a specific record in the table where a requirement is met and to change just 1 element there

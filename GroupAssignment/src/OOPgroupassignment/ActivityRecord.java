@@ -19,14 +19,32 @@ public class ActivityRecord extends HealthRecord {
     public void setNewRecord( int steps)//used to insert a new record into the list, the record must include the data that is parsed inside to track things properly
     {
         int newRecord[] = {this.year,this.day, this.week, steps};
-        TrackActivity.add(newRecord);
+        if(newRecord.length !=column_length)
+        {
+            System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+            return;
+        }
+        else
+        {
+            TrackActivity.add(newRecord);
+        }
+        
     }
 
     public void setNewRecord(int year,int day, int week, int steps, int position )//Like above but with a specified posiiton to insert it into
     {
         
         int newRecord[] = {year,day, week, steps};
-        TrackActivity.add(position,newRecord);
+        if(newRecord.length !=column_length)
+        {
+            System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+            return;
+        }
+        else
+        {
+            TrackActivity.add(position,newRecord);
+        }
+        
     }
 
     public int GetLength() // returns length of the ArrayList
@@ -38,7 +56,17 @@ public class ActivityRecord extends HealthRecord {
     public void ChangeRecord(int year,int day, int week, int steps, int position )// used to change a specific record in the table at a specified position
     {
         int ChangeRecord[] ={year,day, week, steps};
-        TrackActivity.set(position,ChangeRecord);       
+
+        if(ChangeRecord.length !=column_length)
+        {
+            System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+            return;
+        }
+        else
+        {
+            TrackActivity.set(position,ChangeRecord);   
+        }
+            
     }
 
     public void ChangeRecord(int changeValue, int condition_value, String condition_checked )// used to change a specific record in the table where a requirement is met and to change just 1 element there
