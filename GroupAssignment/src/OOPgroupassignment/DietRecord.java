@@ -24,6 +24,8 @@ public class DietRecord extends HealthRecord{
         int newRecord[] = {this.year,this.week,this.day,calories,meals,waterDrunk};
         if(newRecord.length !=column_length)
         {
+
+            
             System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
             return;
         }
@@ -117,11 +119,8 @@ public class DietRecord extends HealthRecord{
         for(int i = 0;i<array_length;i++)
         {
 
-            System.out.println("year:" +TrackDiet.get(i)[0] + "\tweek:" +TrackDiet.get(i)[1] + "\tday:" + TrackDiet.get(i)[2] + "\tcalories:" + TrackDiet.get(i)[3] + "\tmeals:" + TrackDiet.get(i)[4] + "\t water drunk(in leters)" + TrackDiet.get(i)[5]);
-/*             for(int j = 0; j<column_length;j++)
-            {
-            System.out.print(TrackDiet.get(i)[j] + "\t");
-            } */
+            System.out.println("year:" +TrackDiet.get(i)[0] + "\tweek:" +TrackDiet.get(i)[1] + "\tday:" + TrackDiet.get(i)[2] + "\tcalories:" + TrackDiet.get(i)[3] + "\tmeals:" + TrackDiet.get(i)[4] + "\t water drunk:" + TrackDiet.get(i)[5]+ "L");
+
         }
     }
 

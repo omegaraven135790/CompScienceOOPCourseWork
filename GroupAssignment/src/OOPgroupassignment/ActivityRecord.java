@@ -107,12 +107,10 @@ public class ActivityRecord extends HealthRecord {
     public void displayActivity()
     {
         array_length = TrackActivity.size();
+        System.out.println(array_length);
         for(int i = 0;i<array_length;i++)
         {
-            for(int j = 0; j<column_length;j++)
-            {
-                        System.out.println("year:" +TrackActivity.get(i)[0] + "\tweek:" +TrackActivity.get(i)[1] + "\tday:" + TrackActivity.get(i)[2] + "\n steps:" + TrackActivity.get(i)[3]);
-            }
+                        System.out.println("year:" +TrackActivity.get(i)[0] + "\tweek:" +TrackActivity.get(i)[1] + "\tday:" + TrackActivity.get(i)[2] + "steps:" + TrackActivity.get(i)[3]);
         }
     }
 

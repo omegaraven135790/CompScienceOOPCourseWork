@@ -20,7 +20,7 @@ public class HealthRecord {
     protected int day;
     protected int week;
     protected int year;
-    
+
     public int getDay(){return this.day;}
     public void setDay(int day){this.day = day;}
     
@@ -52,23 +52,30 @@ public class HealthRecord {
     }
     
     public HealthRecord(){
-    this.name = "";
-    this.age = 0;
-    this.weight = 0.0;
-    this.height = 0.0;
-    this.date = LocalDate.now();
-}
-    
+        this.name = "";
+        this.age = 0;
+        this.weight = 0;
+        this.height = 0;
+        this.date = LocalDate.now();
+        this.calendar = Calendar.getInstance();
+        this.day = calendar.get(Calendar.DAY_OF_WEEK);
+        this.week = calendar.get(Calendar.WEEK_OF_YEAR);
+        this.year = calendar.get(Calendar.YEAR);
+    }
+
     public HealthRecord(String name, int age, double weight, double height){
         this.name = name;
         this.age = age;
         this.weight = weight;
         this.height = height;
         this.date = LocalDate.now();
-        this.day = calendar.get(Calendar.DATE);
+        this.calendar = Calendar.getInstance();
+        this.day = calendar.get(Calendar.DAY_OF_WEEK);
         this.week = calendar.get(Calendar.WEEK_OF_YEAR);
         this.year = calendar.get(Calendar.YEAR);
-        this.calendar =Calendar.getInstance();
+
+        
+        
     }
     
     public void displayAccountInfo() {
@@ -76,7 +83,8 @@ public class HealthRecord {
         System.out.print("\nAge: " + this.age);
         System.out.print("\nWeight: " + this.weight + " kg");
         System.out.print("\nHeight: " + this.height + " m");
-        System.out.print("\nDate Today:" +date);
+        System.out.print("\nDate Today:" +date);   
+
     }
     
     
