@@ -124,4 +124,58 @@ public class DietRecord extends HealthRecord{
         }
     }
 
+    public void average()
+    {
+        array_length = TrackDiet.size();
+
+        if(array_length == 0){
+            System.out.println("No diet records to calculate averages.");
+            return;
+        }
+        int total_calories = 0;
+        int total_meals = 0;
+        int total_water = 0;
+        for(int i = 0;i<array_length;i++)
+        {
+            total_calories += TrackDiet.get(i)[3];
+            total_meals += TrackDiet.get(i)[4];
+            total_water += TrackDiet.get(i)[5];
+        }
+        float BMI = (float)((this.weight*10) +(6.25*this.height)-(5*this.age)+5);
+        if(total_calories/array_length <BMI )
+        {
+            System.out.println("You are consuming less calories than your BMI recommends. Consider increasing your calorie intake to " + BMI + " for better health.");
+        }
+        else if(total_calories/array_length >BMI )
+        {
+            System.out.println("You are consuming more calories than your BMI recommends. Consider reducing your calorie intake to " + BMI + " for better health.");
+        }
+        else
+        {
+            System.out.println("Your average calorie intake is" + total_calories/array_length + " and it is aligned with your BMI recommendations. Keep up the good work!");
+        }
+
+        if (total_meals/array_length <3 )
+        {
+            System.out.println("You are having less than 3 meals a day. Consider having at least 3 balanced meals for better nutrition.");
+        }
+        else if(total_meals/array_length >5 )
+        {
+            System.out.println("You are having more than 5 meals a day. Consider reducing your meal frequency to avoid overeating.");
+        }
+        else
+        {
+            System.out.println("Your average meal intake is " + total_meals/array_length + " which is within the recommended range. Keep it up!");
+        }
+
+        if((total_water/array_length) > 2 )
+        {
+            System.out.println("Great job! You are drinking enough water with an average of " + (total_water/array_length) + "L per day.");
+        } 
+        else 
+        {
+            System.out.println("You might want to increase your water intake. Your average is " + (total_water/array_length) + "L per day. Aim for at least 2L daily.");
+        }
+
+    }
 }

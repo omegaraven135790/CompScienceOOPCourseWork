@@ -114,4 +114,26 @@ public class ActivityRecord extends HealthRecord {
         }
     }
 
+    public void average()
+    {
+        array_length = TrackActivity.size();
+        if(array_length == 0){
+            System.out.println("No Step records to calculate averages.");
+            return;
+        }
+        int total_steps = 0;
+        for(int i = 0;i<array_length;i++)
+        {
+            total_steps += TrackActivity.get(i)[3];
+        }
+        if ((total_steps/array_length) > 8000)
+        {
+            System.out.println("Great job! You are meeting your activity goals with an average of " + (total_steps/array_length) + " steps taken.");
+        } 
+        else 
+        {
+            System.out.println("You might want to increase your activity levels. Your average steps taken is " + (total_steps/array_length) + " try to aim for 8000 to 10000 steps.");
+        }
+    }
+
 }

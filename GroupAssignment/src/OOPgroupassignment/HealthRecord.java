@@ -11,10 +11,10 @@ import java.util.Calendar;
  * @author doshyant
  */
 public class HealthRecord {
-    private String name;
-    private int age;
-    private double weight;
-    private double height;
+    protected String name;
+    protected int age;
+    protected double weight;
+    protected double height;
     protected Calendar calendar;
     protected LocalDate date;
     protected int day;
@@ -96,4 +96,6 @@ public class HealthRecord {
     private void UpdateDate(){
         this.date = LocalDate.now();
     }
+
+
 }

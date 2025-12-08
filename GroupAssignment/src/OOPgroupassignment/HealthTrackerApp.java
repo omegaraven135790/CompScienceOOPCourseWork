@@ -155,7 +155,8 @@ public class HealthTrackerApp {
             System.out.print("\nPress 3 to update record by position");
             System.out.print("\nPress 4 to update record by condition");
             System.out.print("\nPress 5 to view Diet Record");
-            System.out.print("\nPress 6 to return to main menu: ");
+            System.out.print("\nPress 6 to view your average Diet Record");
+            System.out.print("\nPress 7 to return to main menu: ");
             int choice = input.nextInt();
             input.nextLine();
             switch(choice){
@@ -242,6 +243,10 @@ public class HealthTrackerApp {
                     dietgoal.displayDiet();
                     break;
                 case 6:
+                    System.out.print("\nYour Average Diet Records: \n ");
+                    dietgoal.average();
+                    break;
+                case 7:
                     run = false;
                     break;
                 default:
@@ -261,7 +266,8 @@ public class HealthTrackerApp {
             System.out.print("\nPress 3 to update record by position");
             System.out.print("\nPress 4 to update record by condition");
             System.out.print("\nPress 5 to view Activity Record");
-            System.out.print("\nPress 6 to return to main menu: ");
+            System.out.print("\nPress 6 to view your average Activity Record");
+            System.out.print("\nPress 7 to return to main menu: ");
             int choice = input.nextInt();
             input.nextLine();
             switch(choice){
@@ -336,6 +342,10 @@ public class HealthTrackerApp {
                     activitygoal.displayActivity();
                     break;
                 case 6:
+                    System.out.print("\nYour Average Activity Records: \n ");
+                    activitygoal.average();
+                    break;
+                case 7:
                     run = false;
                     break;
                 default:
