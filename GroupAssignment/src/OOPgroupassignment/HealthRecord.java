@@ -11,6 +11,7 @@ import java.util.Calendar;
  * @author doshyant
  */
 public class HealthRecord {
+    //make access modifiers for user data and localdate
     protected String name;
     protected int age;
     protected double weight;
@@ -21,6 +22,7 @@ public class HealthRecord {
     protected int week;
     protected int year;
 
+    //setter and getter methods for private data to be readable and able to be changed
     public int getDay(){return this.day;}
     public void setDay(int day){this.day = day;}
     
@@ -51,6 +53,7 @@ public class HealthRecord {
         UpdateDate();
     }
     
+    //default constructor
     public HealthRecord(){
         this.name = "";
         this.age = 0;
@@ -63,6 +66,7 @@ public class HealthRecord {
         this.year = calendar.get(Calendar.YEAR);
     }
 
+    //constructor with parameters
     public HealthRecord(String name, int age, double weight, double height){
         this.name = name;
         this.age = age;
@@ -78,6 +82,7 @@ public class HealthRecord {
         
     }
     
+    //function to show user data
     public void displayAccountInfo() {
         System.out.print("\nUsername: " + this.name);
         System.out.print("\nAge: " + this.age);
@@ -88,11 +93,12 @@ public class HealthRecord {
     }
     
     
-    
+    //convert date to string and returns it
     public String getDate(){
         return date.toString();
     }
     
+    //update date when any user data is changed 
     private void UpdateDate(){
         this.date = LocalDate.now();
     }

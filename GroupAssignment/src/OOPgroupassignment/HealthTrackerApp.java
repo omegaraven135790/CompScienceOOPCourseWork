@@ -10,6 +10,7 @@ import java.util.Scanner;
  * @author Doshyant Raj
  */
 public class HealthTrackerApp {
+    //make objects for all the different classes and Scanner
     private Scanner input = new Scanner(System.in);
     private HealthRecord data = new HealthRecord(); 
     private DietRecord dietgoal = new DietRecord();
@@ -17,19 +18,22 @@ public class HealthTrackerApp {
 
     
     public static void main(String[]args){
+        //create object for healthapp to allow main to call functions and call function to set user data
         HealthTrackerApp menu = new HealthTrackerApp();
         menu.SetData();
     }
+
+    //function to set user data
     public void SetData(){
         System.out.print("Welcome to LifeTracker! \n Please enter a username: ");
         String name = input.nextLine();
-        data.setName(name);
+        data.setName(name); //set name into setter method in healthrecord
         boolean valid = false;
-        while(!valid){
-            try{
+        while(!valid){ //while loop used to make sure all data is correct when setting user data
+            try{ //try and catch is used for exception handling in healthtrackerapp
                 System.out.print("\nEnter your age: ");
                 int age = input.nextInt();
-                if(age <=0){
+                if(age <=0){ //used to make sure age, height and weight is above 0
                     System.out.print("Age must be above 0, Try again");
                     continue;
                 }
@@ -48,25 +52,28 @@ public class HealthTrackerApp {
                     continue;
                 }
                 
+                //set age, weight and height into setter method
                 data.setAge(age);
                 data.setWeight(weight);
                 data.setHeight(height);
                 
-                valid = true;
+                valid = true; //ends while loop
             }
             catch(Exception e){
                 System.out.print("Invalid value! Try again");
-                input.nextLine();
+                input.nextLine(); //used to clear Scanner newline
             }
         }
         System.out.print("\nThank you for filling your information!\nTaking you to main menu...");
-        MainMenu(data);
+        MainMenu(data); //calls function to the mainmenu
     }
     
+    //function to view and access diet and activity record as well as view and change user data
     public void MainMenu(HealthRecord data){
    
         boolean running = true;
         
+        //while loop used so the user can keep doing things in the program until they wish to log out
         while(running){
             System.out.print("\nWelcome to Lifetracker menu! what record would you like to see?");
             System.out.print("\nPress 1 to view account information,");
@@ -76,23 +83,23 @@ public class HealthTrackerApp {
             System.out.print("\nPress 5 to log out: ");
             int choice = input.nextInt();
             input.nextLine();
-            switch(choice){
+            switch(choice){ //switch case is used to account for all available inputs
                 case 1:
                     System.out.print("\nYour Information: ");
-                    data.displayAccountInfo();
+                    data.displayAccountInfo(); //display user data
                     break;
                 case 2:
-                    EditAccount();
+                    EditAccount(); //edit user data
                     break;
                 case 3:
-                    DietMenu();
+                    DietMenu(); //call function to menu for dietrecord
                     break;
                 case 4:
-                    ActivityMenu();
+                    ActivityMenu(); //call function to menu for activityrecord
                     break;
                 case 5:
                     System.out.print("\nLogging out...");
-                    running = false;
+                    running = false; //breaks while loop and end program
                     break;
                 default:
                     System.out.print("\nInvalid input! Please try again");
@@ -100,6 +107,7 @@ public class HealthTrackerApp {
         }
     }
     
+    //function to edit user data
     public void EditAccount(){
         System.out.print("Insert new username: ");
         String newUsername = input.nextLine();
@@ -146,6 +154,7 @@ public class HealthTrackerApp {
         
     }
     
+    //function for user to add and edit record in dietrecord
     public void DietMenu(){
         boolean run = true;
         while(run){
@@ -169,7 +178,7 @@ public class HealthTrackerApp {
                         System.out.print("Insert amount of water drunk: ");
                         int water = input.nextInt();
                     
-                        dietgoal.setNewRecord(calorie, meals, water);
+                        dietgoal.setNewRecord(calorie, meals, water); // Insert data input into a dietrecord
                         System.out.print("Record successfully saved");
                     }
                     catch(Exception e){
@@ -194,7 +203,7 @@ public class HealthTrackerApp {
                         System.out.print("Insert amount of water drunk: ");
                         int water = input.nextInt();
                     
-                        dietgoal.setNewRecord(year, day, week, calorie, meals, water, post);
+                        dietgoal.setNewRecord(year, day, week, calorie, meals, water, post); //Insert data input into dietrecord into a specific position in array list
                         System.out.print("Record added successfully!");
                     }
                     catch(Exception e){
@@ -213,7 +222,7 @@ public class HealthTrackerApp {
                         System.out.print("New meal amount: "); int newMeal = input.nextInt();
                         System.out.print("New water amount: "); int newWater = input.nextInt();
                         
-                        dietgoal.setNewRecord(newYear, newDay, newWeek, newCalorie, newMeal, newWater, post);
+                        dietgoal.setNewRecord(newYear, newDay, newWeek, newCalorie, newMeal, newWater, post); //change record in dietrecord based on array list position
                         System.out.print("Record changed succesfully!");
                         input.nextLine();
                     
@@ -232,7 +241,7 @@ public class HealthTrackerApp {
                         System.out.print("Insert the new value: ");
                         int newValue = input.nextInt();
                         
-                        dietgoal.ChangeRecord(newValue, conditionValue, field);
+                        dietgoal.ChangeRecord(newValue, conditionValue, field); //change specific record based on condition
                         System.out.print("Record changed successfully!");
                         input.nextLine();
                     }
@@ -244,14 +253,14 @@ public class HealthTrackerApp {
                     break;
                 case 5:
                     System.out.print("\nYour Diet Record:\n ");
-                    dietgoal.displayDiet();
+                    dietgoal.displayDiet(); //display dietrecord
                     break;
                 case 6:
                     System.out.print("\nYour Average Diet Records: \n ");
-                    dietgoal.average();
+                    dietgoal.average(); //shows average of all dietrecord
                     break;
                 case 7:
-                    run = false;
+                    run = false; //returns user to main menu
                     break;
                 default:
                     System.out.print("Invalid input");
@@ -260,6 +269,7 @@ public class HealthTrackerApp {
         }
     }
     
+    //function for user to add and change record in activityrecord
     public void ActivityMenu(){
         boolean run = true;
         
@@ -279,7 +289,7 @@ public class HealthTrackerApp {
                     try{
                         System.out.print("Insert amout of steps taken: ");
                         int steps = input.nextInt();                  
-                        activitygoal.setNewRecord(steps);
+                        activitygoal.setNewRecord(steps); //insert data into activityrecord
                         System.out.print("Record succesfully added");
                     }
                     catch(Exception e){
@@ -300,7 +310,7 @@ public class HealthTrackerApp {
                         System.out.print("Insert amount of steps taken: ");
                         int steps = input.nextInt();
                         
-                        activitygoal.setNewRecord(year, day, week, steps, post);
+                        activitygoal.setNewRecord(year, day, week, steps, post); //insert data input into activityrecord based on specified position in arraylist
                         System.out.print("Record added successfully!");
                     }
                     catch(Exception e){
@@ -317,7 +327,7 @@ public class HealthTrackerApp {
                         System.out.print("New day: "); int newDay = input.nextInt();
                         System.out.print("New steps taken: "); int newSteps = input.nextInt();
                         
-                        activitygoal.setNewRecord(newYear, newDay, newWeek, newSteps, post);
+                        activitygoal.setNewRecord(newYear, newDay, newWeek, newSteps, post); //change record in activityrecord based on arraylist position
                         System.out.print("Record successfully changed!");
                     }
                     catch(Exception e){
@@ -334,7 +344,7 @@ public class HealthTrackerApp {
                         System.out.print("Insert new Value: ");
                         int newValue = input.nextInt();
                         
-                        activitygoal.ChangeRecord(newValue, conditionValue, field);
+                        activitygoal.ChangeRecord(newValue, conditionValue, field); //change specific record based on condition
                         System.out.print("Record changed succesfully!");
                     }
                     catch(Exception e){
@@ -344,14 +354,14 @@ public class HealthTrackerApp {
                     break;
                 case 5:
                     System.out.print("\nYour Activity Record: ");
-                    activitygoal.displayActivity();
+                    activitygoal.displayActivity(); //display activityrecord
                     break;
                 case 6:
                     System.out.print("\nYour Average Activity Records: \n ");
-                    activitygoal.average();
+                    activitygoal.average(); //show average of all activityrecord
                     break;
                 case 7:
-                    run = false;
+                    run = false; //return to main menu
                     break;
                 default:
                     System.out.print("Invalid input");
