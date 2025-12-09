@@ -215,6 +215,7 @@ public class HealthTrackerApp {
                         
                         dietgoal.setNewRecord(newYear, newDay, newWeek, newCalorie, newMeal, newWater, post);
                         System.out.print("Record changed succesfully!");
+                        input.nextLine();
                     
                     }
                     catch(Exception e){
@@ -233,13 +234,16 @@ public class HealthTrackerApp {
                         
                         dietgoal.ChangeRecord(newValue, conditionValue, field);
                         System.out.print("Record changed successfully!");
+                        input.nextLine();
                     }
                     catch(Exception e){
                         System.out.print("Invalid input");
                         input.nextLine();
+                        
                     }
+                    break;
                 case 5:
-                    System.out.print("\nYour Diet Record: ");
+                    System.out.print("\nYour Diet Record:\n ");
                     dietgoal.displayDiet();
                     break;
                 case 6:
@@ -337,6 +341,7 @@ public class HealthTrackerApp {
                         System.out.print("Invalid input");
                         input.nextLine();
                     }
+                    break;
                 case 5:
                     System.out.print("\nYour Activity Record: ");
                     activitygoal.displayActivity();
