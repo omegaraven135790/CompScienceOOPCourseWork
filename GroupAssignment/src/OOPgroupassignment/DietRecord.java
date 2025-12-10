@@ -10,8 +10,14 @@ import java.util.ArrayList;
  *
  * @author Akmal Zikry
  * @author Doshyant Raj
+ * 
+ * Class is a derived class of healthrecord
+ * Class takes input from healthtrackerapp to create or edit records for dietrecord
+ * Class uses arraylist to store diet records
+ * 
  */
 public class DietRecord extends HealthRecord{
+    //Make a array list to store records in 
      private ArrayList<int[]> TrackDiet = new ArrayList<>();
      private final int column_length = 6;
      private int array_length = TrackDiet.size();     
@@ -21,8 +27,8 @@ public class DietRecord extends HealthRecord{
     public void setNewRecord( int calories, int meals, int waterDrunk )//used to insert a new record into the list, the record must include the data that is parsed inside to track things properly
     {
         
-        int newRecord[] = {this.year,this.week,this.day,calories,meals,waterDrunk};
-        if(newRecord.length !=column_length)
+        int newRecord[] = {this.year,this.week,this.day,calories,meals,waterDrunk};  //create new array to store user input from healthtrackerapp
+        if(newRecord.length !=column_length) //if the user record length is not the same as column lenght this message appears
         {
 
             
@@ -31,7 +37,7 @@ public class DietRecord extends HealthRecord{
         }
         else
         {
-            TrackDiet.add(newRecord);
+            TrackDiet.add(newRecord); //new record is added into array list 
             array_length = TrackDiet.size();
         }
     }
@@ -47,7 +53,7 @@ public class DietRecord extends HealthRecord{
             }
             else
             {
-                TrackDiet.add(position,newRecord);
+                TrackDiet.add(position,newRecord); //new record is added into specific position in array list
                 array_length = TrackDiet.size();
             }
     }
@@ -69,7 +75,7 @@ public class DietRecord extends HealthRecord{
             }
             else
             {
-                TrackDiet.set(position,ChangeRecord);  
+                TrackDiet.set(position,ChangeRecord);  //replace record from position with changed record
             }
              
     }
@@ -77,7 +83,7 @@ public class DietRecord extends HealthRecord{
         public void ChangeRecord(int changeValue, int condition_value, String condition_checked )// used to change a specific record in the table where a requirement is met and to change just 1 element there
     {
         
-        switch(condition_checked)
+        switch(condition_checked) //checks what specific element in a record is to be changed
         {
             case "year":
                 condition_position = 0;
@@ -115,7 +121,7 @@ public class DietRecord extends HealthRecord{
 
     public void displayDiet()
     {
-        array_length = TrackDiet.size();
+        array_length = TrackDiet.size(); //takes length of array and displays it 
         for(int i = 0;i<array_length;i++)
         {
 
@@ -124,6 +130,10 @@ public class DietRecord extends HealthRecord{
         }
     }
 
+    /** 
+    * Function takes the total amount for each element in dietrecord 
+    * And divides it to see if the user is eating healthy or not 
+    */
     public void average()
     {
         array_length = TrackDiet.size();

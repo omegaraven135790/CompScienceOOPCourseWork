@@ -9,6 +9,10 @@ import java.util.Calendar;
  *
  * @author Akmal Zikry
  * @author doshyant
+ * Base class that parents dietrecord and activityrecord
+ * Stores getter and setter methods for user data
+ * Has localdate to get date of records 
+ * 
  */
 public class HealthRecord {
     //make access modifiers for user data and localdate

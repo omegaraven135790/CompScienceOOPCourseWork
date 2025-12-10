@@ -10,6 +10,11 @@ import java.util.*;
  *
  * @author Akmal Zikry
  * @author Doshyant Raj
+ * Derived class for healthrecord
+ * Takes user input in healthtrackerapp to create and edit records for activityrecord
+ * uses arraylist to store records
+ * Coding similar to dietrecord but uses input from ActivityMenu from healthtrackerapp
+ * 
  */
 public class ActivityRecord extends HealthRecord {
     //array list to append the data from activity and diet record
@@ -114,7 +119,7 @@ public class ActivityRecord extends HealthRecord {
         }
     }
 
-    public void average()
+    public void average() //takes average steps from all the records to see if user has sufficient activity or not
     {
         array_length = TrackActivity.size();
         if(array_length == 0){

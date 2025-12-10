@@ -8,6 +8,11 @@ import java.util.Scanner;
  *
  * @author Akmal Zikry
  * @author Doshyant Raj
+ * 
+ * This class is where user inputs data and returns all values from dietrecord and activitrecord
+ * Class uses try and catch for exception handling to ensure all values input is correct
+ * Class has functions to create a main menu, menu to edit and view diet record, and menu to edit and view activityrecord
+ * 
  */
 public class HealthTrackerApp {
     //make objects for all the different classes and Scanner
