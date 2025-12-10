@@ -51,11 +51,19 @@ public class DietRecord extends HealthRecord{
                 System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
                 return;
             }
+            else if(position > array_length)
+            {
+                TrackDiet.add(newRecord); /*new record is added into array list at the end of the array as otherwise it would cause an error, it doenst make sense 
+                 to inform the user of this error though since this will have a simialr effect to if we had implemented it another way */
+            
+            }
+
             else
             {
-                TrackDiet.add(position,newRecord); //new record is added into specific position in array list
-                array_length = TrackDiet.size();
+                TrackDiet.add(position,newRecord); //new record is added into the specific position in array list
+                
             }
+            array_length = TrackDiet.size();
     }
 
     public int GetLength() // returns length of the ArrayList
@@ -68,9 +76,14 @@ public class DietRecord extends HealthRecord{
     {
         int ChangeRecord[] ={year,week,day,calories,meals,waterDrunk};
 
-         if(ChangeRecord.length !=column_length)
+         if(ChangeRecord.length !=column_length) // check if they have inserted the correcct amount of data
             {
                 System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+                return;
+            }
+        else if(position > array_length) // check if the position selcected is invalid
+            {
+                System.out.println("invalid position, position exceeds length of array which is " + array_length);
                 return;
             }
             else
@@ -109,7 +122,7 @@ public class DietRecord extends HealthRecord{
                 System.out.println("invalid condition being checked, the valid conditions to be checked are: \n day \n week \n calories \n meals \n waterDrunk \n");
                 break;
         }
-
+        
         for(int i = 0;i<array_length;i++)//once which condition to be changed has been found it is changed everywhere the requirment is met
         {
                 if(TrackDiet.get(i)[condition_position]== condition_value)
@@ -117,6 +130,7 @@ public class DietRecord extends HealthRecord{
                     TrackDiet.get(i)[condition_position] = changeValue;
                 }
         }
+        System.out.println("Records updated succesfully."); // indication to the user that the task has been completed succesfully
     }
 
     public void displayDiet()
@@ -132,7 +146,7 @@ public class DietRecord extends HealthRecord{
 
     /** 
     * Function takes the total amount for each element in dietrecord 
-    * And divides it to see if the user is eating healthy or not 
+    * And divides it to see if the user has a healthy diet
     */
     public void average()
     {
@@ -151,18 +165,18 @@ public class DietRecord extends HealthRecord{
             total_meals += TrackDiet.get(i)[4];
             total_water += TrackDiet.get(i)[5];
         }
-        float BMI = (float)((this.weight*10) +(6.25*this.height)-(5*this.age)+5);
-        if(total_calories/array_length <BMI )
+        double BMR = (66.47 +(this.weight*13.75 ) +(5*this.height*100)-(6.755*this.age)+5.0);
+        if(total_calories/array_length <BMR )
         {
-            System.out.println("You are consuming less calories than your BMI recommends. Consider increasing your calorie intake to " + BMI + " for better health.");
+            System.out.println("You are consuming less calories than your BMR recommends. Consider increasing your calorie intake to " + BMR + " for better health.");
         }
-        else if(total_calories/array_length >BMI )
+        else if(total_calories/array_length >BMR )
         {
-            System.out.println("You are consuming more calories than your BMI recommends. Consider reducing your calorie intake to " + BMI + " for better health.");
+            System.out.println("You are consuming more calories than your BMR recommends. Consider reducing your calorie intake to " + BMR + " for better health.");
         }
         else
         {
-            System.out.println("Your average calorie intake is" + total_calories/array_length + " and it is aligned with your BMI recommendations. Keep up the good work!");
+            System.out.println("Your average calorie intake is" + total_calories/array_length + " and it is aligned with your BMR recommendations. Keep up the good work!");
         }
 
         if (total_meals/array_length <3 )

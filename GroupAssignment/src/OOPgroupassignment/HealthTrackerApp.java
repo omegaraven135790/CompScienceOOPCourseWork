@@ -159,7 +159,7 @@ public class HealthTrackerApp {
         
     }
     
-    //function for user to add and edit record in dietrecord
+    //function for user to add and edit record in dietrecord and displays the options.
     public void DietMenu(){
         boolean run = true;
         while(run){
@@ -176,19 +176,19 @@ public class HealthTrackerApp {
             switch(choice){
                 case 1:
                     try{
-                        System.out.print("Insert your calorie intake: ");
+                        System.out.print("Insert your calorie intake: ");//prompt the user for relevant data that they must input
                         int calorie = input.nextInt();
                         System.out.print("Insert how many meals is taken: ");
                         int meals = input.nextInt();
-                        System.out.print("Insert amount of water drunk: ");
+                        System.out.print("Insert amount of water drunk in liters: ");
                         int water = input.nextInt();
                     
                         dietgoal.setNewRecord(calorie, meals, water); // Insert data input into a dietrecord
-                        System.out.print("Record successfully saved");
+                        System.out.println("Record successfully saved");
                     }
                     catch(Exception e){
                         System.out.print("Invalid input! try again");
-                        input.nextLine();
+                        input.nextLine();//clear the scanner for next inputs
                     }
                     break;
                 case 2:
@@ -205,7 +205,7 @@ public class HealthTrackerApp {
                         int calorie = input.nextInt();
                         System.out.print("Insert how many meals is taken: ");
                         int meals = input.nextInt();
-                        System.out.print("Insert amount of water drunk: ");
+                        System.out.print("Insert amount of water drunk in liters: ");
                         int water = input.nextInt();
                     
                         dietgoal.setNewRecord(year, day, week, calorie, meals, water, post); //Insert data input into dietrecord into a specific position in array list
@@ -213,7 +213,7 @@ public class HealthTrackerApp {
                     }
                     catch(Exception e){
                         System.out.print("Invalid input");
-                        input.nextLine();
+                        input.nextLine();//clear the scanner for next inputs
                     }
                     break;
                 case 3:
@@ -225,11 +225,11 @@ public class HealthTrackerApp {
                         System.out.print("New day: "); int newDay = input.nextInt();
                         System.out.print("New calorie: "); int newCalorie = input.nextInt();
                         System.out.print("New meal amount: "); int newMeal = input.nextInt();
-                        System.out.print("New water amount: "); int newWater = input.nextInt();
+                        System.out.print("New water amount in liters: "); int newWater = input.nextInt();
                         
                         dietgoal.setNewRecord(newYear, newDay, newWeek, newCalorie, newMeal, newWater, post); //change record in dietrecord based on array list position
                         System.out.print("Record changed succesfully!");
-                        input.nextLine();
+                        input.nextLine();//clear the scanner for next inputs
                     
                     }
                     catch(Exception e){
@@ -278,7 +278,8 @@ public class HealthTrackerApp {
     public void ActivityMenu(){
         boolean run = true;
         
-        while(run){
+        while(run)//display options for user to choose from relating to their acitvity record
+            {
             System.out.print("\nYou are now at Activity Record. \nWhat would you like to do?");
             System.out.print("\nPress 1 to insert data into record");
             System.out.print("\nPress 2 to insert data into record by position");

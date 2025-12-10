@@ -28,7 +28,7 @@ public class ActivityRecord extends HealthRecord {
         int newRecord[] = {this.year,this.day, this.week, steps};
         if(newRecord.length !=column_length)
         {
-            System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+            System.out.println("invalid input, you must provide the steps walked today to add a new log, include position to insert it at a specific place");
             return;
         }
         else
@@ -48,6 +48,12 @@ public class ActivityRecord extends HealthRecord {
             System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
             return;
         }
+        else if(position > array_length)
+            {
+                TrackActivity.add(newRecord); /*new record is added into array list at the end of the array as otherwise it would cause an error, it doenst make sense 
+                 to inform the user of this error though since this will have a simialr effect to if we had implemented it another way */
+            
+            }
         else
         {
             TrackActivity.add(position,newRecord);
@@ -68,7 +74,12 @@ public class ActivityRecord extends HealthRecord {
 
         if(ChangeRecord.length !=column_length)
         {
-            System.out.println("invalid input, you must provide the calories,meals and waterDrunk to be able to add a new log, include position to insert it at a specific place");
+            System.out.println("invalid input, you must provide the steps walked today to add a new log, include position to insert it at a specific place");
+            return;
+        }
+        else if(position > array_length) // check if the position selcected is invalid
+        {
+            System.out.println("invalid position, position exceeds length of array which is " + array_length);
             return;
         }
         else
@@ -107,9 +118,10 @@ public class ActivityRecord extends HealthRecord {
                     TrackActivity.get(i)[condition_position] = condition_value;
                 }
         }
+        System.out.println("Records updated succesfully."); // indication to the user that the task has been completed succesfully
     }
 
-    public void displayActivity()
+    public void displayActivity() //displays all records in the array list in a formatted manner
     {
         array_length = TrackActivity.size();
         System.out.println(array_length);
@@ -119,7 +131,7 @@ public class ActivityRecord extends HealthRecord {
         }
     }
 
-    public void average() //takes average steps from all the records to see if user has sufficient activity or not
+    public void average() //takes average steps from all the records to see if user has sufficient activity or not, gives feedback accordingly.
     {
         array_length = TrackActivity.size();
         if(array_length == 0){
