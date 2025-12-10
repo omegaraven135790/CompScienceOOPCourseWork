@@ -57,18 +57,6 @@ public class HealthRecord {
         UpdateDate();
     }
     
-    //default constructor
-    public HealthRecord(){
-        this.name = "";
-        this.age = 0;
-        this.weight = 0;
-        this.height = 0;
-        this.date = LocalDate.now();
-        this.calendar = Calendar.getInstance();
-        this.day = calendar.get(Calendar.DAY_OF_WEEK);
-        this.week = calendar.get(Calendar.WEEK_OF_YEAR);
-        this.year = calendar.get(Calendar.YEAR);
-    }
 
     //constructor with parameters
     public HealthRecord(String name, int age, double weight, double height){
@@ -80,10 +68,20 @@ public class HealthRecord {
         this.calendar = Calendar.getInstance();
         this.day = calendar.get(Calendar.DAY_OF_WEEK);
         this.week = calendar.get(Calendar.WEEK_OF_YEAR);
+        this.year = calendar.get(Calendar.YEAR);   
+    }
+    
+    //default constructor
+    public HealthRecord(){
+        this.name = "";
+        this.age = 0;
+        this.weight = 0;
+        this.height = 0;
+        this.date = LocalDate.now();
+        this.calendar = Calendar.getInstance();
+        this.day = calendar.get(Calendar.DAY_OF_WEEK);
+        this.week = calendar.get(Calendar.WEEK_OF_YEAR);
         this.year = calendar.get(Calendar.YEAR);
-
-        
-        
     }
     
     //function to show user data

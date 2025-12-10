@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package OOPgroupassignment;
-
+import java.math.*;
 import java.util.ArrayList;
 
 /**
@@ -165,14 +165,15 @@ public class DietRecord extends HealthRecord{
             total_meals += TrackDiet.get(i)[4];
             total_water += TrackDiet.get(i)[5];
         }
-        double BMR = (66.47 +(this.weight*13.75 ) +(5*this.height*100)-(6.755*this.age)+5.0);
+        double BMR = (66.47 +(this.weight*13.75 ) +(5*this.height*100)-(6.755*this.age)+5.0); 
+        long roundedAverage = Math.round(BMR); //rpunds of BMR number to nearest integer
         if(total_calories/array_length <BMR )
         {
-            System.out.println("You are consuming less calories than your BMR recommends. Consider increasing your calorie intake to " + BMR + " for better health.");
+            System.out.println("You are consuming less calories than your BMR recommends. Consider increasing your calorie intake to " + roundedAverage + " for better health.");
         }
         else if(total_calories/array_length >BMR )
         {
-            System.out.println("You are consuming more calories than your BMR recommends. Consider reducing your calorie intake to " + BMR + " for better health.");
+            System.out.println("You are consuming more calories than your BMR recommends. Consider reducing your calorie intake to " + roundedAverage + " for better health.");
         }
         else
         {

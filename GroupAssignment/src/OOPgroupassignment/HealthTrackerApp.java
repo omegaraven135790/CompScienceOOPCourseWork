@@ -15,11 +15,11 @@ import java.util.Scanner;
  * 
  */
 public class HealthTrackerApp {
-    //make objects for all the different classes and Scanner
+    //make access modifiers for all the different classes and object for Scanner
     private Scanner input = new Scanner(System.in);
-    private HealthRecord data = new HealthRecord(); 
-    private DietRecord dietgoal = new DietRecord();
-    private ActivityRecord activitygoal = new ActivityRecord();
+    private HealthRecord data; 
+    private DietRecord dietgoal;
+    private ActivityRecord activitygoal;
 
     
     public static void main(String[]args){
@@ -32,26 +32,30 @@ public class HealthTrackerApp {
     public void SetData(){
         System.out.print("Welcome to LifeTracker! \n Please enter a username: ");
         String name = input.nextLine();
+        data = new HealthRecord(); //create object for healthrecord
         data.setName(name); //set name into setter method in healthrecord
+        int age= 0;
+        double weight = 0;
+        double height = 0;
         boolean valid = false;
         while(!valid){ //while loop used to make sure all data is correct when setting user data
             try{ //try and catch is used for exception handling in healthtrackerapp
                 System.out.print("\nEnter your age: ");
-                int age = input.nextInt();
+                age = input.nextInt();
                 if(age <=0){ //used to make sure age, height and weight is above 0
                     System.out.print("Age must be above 0, Try again");
                     continue;
                 }
                 
                 System.out.print("\nEnter your weight in kg: ");
-                double weight = input.nextDouble();
+                weight = input.nextDouble();
                 if(weight <= 0){
                     System.out.print("Weight must be above 0, Try again");
                     continue;
                 }
                 
                 System.out.print("\nEnter your height in metres: ");
-                double height = input.nextDouble();
+                height = input.nextDouble();
                 if(height <= 0){
                     System.out.print("Height must be above 0, Try again");
                     continue;
@@ -69,12 +73,23 @@ public class HealthTrackerApp {
                 input.nextLine(); //used to clear Scanner newline
             }
         }
+        
+        /**
+         * create object for dietrecord and activityrecord
+         * setter method is called onto dietgoal here so value can be used in dietrecord
+        */
+        dietgoal = new DietRecord();
+        dietgoal.setAge(age);
+        dietgoal.setWeight(weight);
+        dietgoal.setHeight(height);
+        activitygoal = new ActivityRecord();
+        
         System.out.print("\nThank you for filling your information!\nTaking you to main menu...");
-        MainMenu(data); //calls function to the mainmenu
+        MainMenu(data,dietgoal,activitygoal); //calls function to the mainmenu
     }
     
     //function to view and access diet and activity record as well as view and change user data
-    public void MainMenu(HealthRecord data){
+    public void MainMenu(HealthRecord data, DietRecord dietgoal, ActivityRecord activitygoal){
    
         boolean running = true;
         
@@ -97,7 +112,7 @@ public class HealthTrackerApp {
                     EditAccount(); //edit user data
                     break;
                 case 3:
-                    DietMenu(); //call function to menu for dietrecord
+                    DietMenu(data); //call function to menu for dietrecord
                     break;
                 case 4:
                     ActivityMenu(); //call function to menu for activityrecord
@@ -160,7 +175,7 @@ public class HealthTrackerApp {
     }
     
     //function for user to add and edit record in dietrecord and displays the options.
-    public void DietMenu(){
+    public void DietMenu(HealthRecord data){
         boolean run = true;
         while(run){
             System.out.print("You are now at Diet Record \nWhat do you plan to do?");
