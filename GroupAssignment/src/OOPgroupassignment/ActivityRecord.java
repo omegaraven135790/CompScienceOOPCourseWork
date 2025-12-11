@@ -85,6 +85,7 @@ public class ActivityRecord extends HealthRecord {
         else
         {
             TrackActivity.set(position,ChangeRecord);   
+            System.out.print("Record successfully changed!");
         }
             
     }
@@ -115,7 +116,7 @@ public class ActivityRecord extends HealthRecord {
         {
                 if(TrackActivity.get(i)[condition_position]== condition_value)
                 {
-                    TrackActivity.get(i)[condition_position] = condition_value;
+                    TrackActivity.get(i)[condition_position] = changeValue;
                 }
         }
         System.out.println("Records updated succesfully."); // indication to the user that the task has been completed succesfully
@@ -127,7 +128,7 @@ public class ActivityRecord extends HealthRecord {
         System.out.println(array_length);
         for(int i = 0;i<array_length;i++)
         {
-                        System.out.println("year:" +TrackActivity.get(i)[0] + "\tweek:" +TrackActivity.get(i)[1] + "\tday:" + TrackActivity.get(i)[2] + "steps:" + TrackActivity.get(i)[3]);
+                        System.out.println("year:" +TrackActivity.get(i)[0] + "\tday:" +TrackActivity.get(i)[1] + "\tweek:" + TrackActivity.get(i)[2] + "\tsteps:" + TrackActivity.get(i)[3]);
         }
     }
 

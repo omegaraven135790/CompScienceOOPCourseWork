@@ -95,6 +95,7 @@ public class HealthTrackerApp {
         
         //while loop used so the user can keep doing things in the program until they wish to log out
         while(running){
+            try{
             System.out.print("\nWelcome to Lifetracker menu! what record would you like to see?");
             System.out.print("\nPress 1 to view account information,");
             System.out.print("\nPress 2 to edit account information,");
@@ -123,6 +124,11 @@ public class HealthTrackerApp {
                     break;
                 default:
                     System.out.print("\nInvalid input! Please try again");
+            }
+            }
+            catch(Exception e){
+                System.out.print("Invalid value! Try again");
+                input.nextLine(); //used to clear Scanner newline
             }
         }
     }
@@ -242,8 +248,7 @@ public class HealthTrackerApp {
                         System.out.print("New meal amount: "); int newMeal = input.nextInt();
                         System.out.print("New water amount in liters: "); int newWater = input.nextInt();
                         
-                        dietgoal.setNewRecord(newYear, newDay, newWeek, newCalorie, newMeal, newWater, post); //change record in dietrecord based on array list position
-                        System.out.print("Record changed succesfully!");
+                        dietgoal.ChangeRecord(newYear, newDay, newWeek, newCalorie, newMeal, newWater, post); //change record in dietrecord based on array list position                       
                         input.nextLine();//clear the scanner for next inputs
                     
                     }
@@ -254,7 +259,7 @@ public class HealthTrackerApp {
                     break;
                 case 4:
                     try{
-                        System.out.print("What field would you like to check? (day/week/calorie/meal/water): ");
+                        System.out.print("What field would you like to check? (year/week/day/calories/meal/waterDrunk): ");
                         String field = input.nextLine();
                         System.out.print("Insert condition value: ");
                         int conditionValue = input.nextInt();
@@ -348,8 +353,8 @@ public class HealthTrackerApp {
                         System.out.print("New day: "); int newDay = input.nextInt();
                         System.out.print("New steps taken: "); int newSteps = input.nextInt();
                         
-                        activitygoal.setNewRecord(newYear, newDay, newWeek, newSteps, post); //change record in activityrecord based on arraylist position
-                        System.out.print("Record successfully changed!");
+                        activitygoal.ChangeRecord(newYear, newDay, newWeek, newSteps, post); //change record in activityrecord based on arraylist position
+                        
                     }
                     catch(Exception e){
                         System.out.print("Invalid input");
@@ -358,7 +363,7 @@ public class HealthTrackerApp {
                  break;
                 case 4:
                     try{
-                        System.out.print("What field would you like to check? (day/week/steps)");
+                        System.out.print("What field would you like to check? (week/day/steps): ");
                         String field = input.nextLine();
                         System.out.print("Insert condition value: ");
                         int conditionValue = input.nextInt();

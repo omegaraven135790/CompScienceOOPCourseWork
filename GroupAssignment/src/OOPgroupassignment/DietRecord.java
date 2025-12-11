@@ -89,6 +89,7 @@ public class DietRecord extends HealthRecord{
             else
             {
                 TrackDiet.set(position,ChangeRecord);  //replace record from position with changed record
+                System.out.print("Record changed succesfully!");
             }
              
     }
